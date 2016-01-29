@@ -1,0 +1,333 @@
+[
+  {
+    "version": "1.2.0"
+  },
+  {
+    "activated": true,
+    "metadata": {
+      "label": ""
+    },
+    "properties": {},
+    "children": [
+      {
+        "activated": true,
+        "metadata": {
+          "label": ""
+        },
+        "properties": {},
+        "children": [
+          {
+            "activated": true,
+            "metadata": {
+              "label": ""
+            },
+            "properties": {
+              "name": "Log",
+              "inputParams": [
+                {
+                  "key": "message",
+                  "type": "string",
+                  "value": "Starting"
+                }
+              ],
+              "outputParams": []
+            },
+            "children": [],
+            "id": "adb68356-cf49-4b72-8a22-d4416b9ce834",
+            "type": "action"
+          },
+          {
+            "activated": true,
+            "metadata": {
+              "label": ""
+            },
+            "properties": {
+              "name": "IntentGetPartsStream",
+              "inputParams": [
+                {
+                  "key": "client_id",
+                  "type": "globalKnowledge",
+                  "value": "client_id"
+                },
+                {
+                  "key": "client_secret",
+                  "type": "globalKnowledge",
+                  "value": "client_secret"
+                },
+                {
+                  "key": "ref",
+                  "type": "string",
+                  "value": "CONSO-PART-00015"
+                }
+              ],
+              "outputParams": [
+                {
+                  "key": "result",
+                  "type": "entityKnowledge",
+                  "value": "part"
+                }
+              ]
+            },
+            "children": [],
+            "id": "6954a5c4-2865-444c-b997-329243ed3419",
+            "type": "action"
+          },
+          {
+            "activated": true,
+            "metadata": {
+              "label": ""
+            },
+            "properties": {
+              "destination": "part.streams[21].threshold",
+              "op": {
+                "type": "integer",
+                "value": "98840"
+              }
+            },
+            "children": [],
+            "id": "1530b3c5-8f4f-45fc-9687-e2201380c884",
+            "type": "set"
+          },
+          {
+            "activated": true,
+            "metadata": {
+              "label": ""
+            },
+            "properties": {
+              "statusCondition": "failsIfAnyFails",
+              "retryPolicy": "propagateToAll"
+            },
+            "children": [
+              {
+                "activated": true,
+                "metadata": {
+                  "label": ""
+                },
+                "properties": {},
+                "children": [
+                  {
+                    "activated": true,
+                    "metadata": {
+                      "label": ""
+                    },
+                    "properties": {
+                      "name": "IntentGetStreamData",
+                      "inputParams": [
+                        {
+                          "key": "stream",
+                          "type": "entityKnowledge",
+                          "value": "part.streams[21]"
+                        },
+                        {
+                          "key": "time",
+                          "type": "globalKnowledge",
+                          "value": "time"
+                        },
+                        {
+                          "key": "client_id",
+                          "type": "globalKnowledge",
+                          "value": "client_id"
+                        },
+                        {
+                          "key": "client_secret",
+                          "type": "globalKnowledge",
+                          "value": "client_secret"
+                        }
+                      ],
+                      "outputParams": [
+                        {
+                          "key": "data",
+                          "type": "entityKnowledge",
+                          "value": "part.streams[21].data"
+                        }
+                      ]
+                    },
+                    "children": [],
+                    "id": "8ed2f091-0d37-4e7b-9960-178d13da0a3d",
+                    "type": "action"
+                  },
+                  {
+                    "activated": true,
+                    "metadata": {
+                      "label": ""
+                    },
+                    "properties": {
+                      "name": "Log",
+                      "inputParams": [
+                        {
+                          "key": "message",
+                          "type": "string",
+                          "value": "[{t}] last snapshot: {v}"
+                        },
+                        {
+                          "key": "t",
+                          "type": "globalKnowledge",
+                          "value": "isoTime"
+                        },
+                        {
+                          "key": "v",
+                          "type": "entityKnowledge",
+                          "value": "part.streams[21].data.value"
+                        }
+                      ],
+                      "outputParams": []
+                    },
+                    "children": [],
+                    "id": "d91e04b5-21ad-4421-ab48-d6515a58809c",
+                    "type": "action"
+                  }
+                ],
+                "id": "1713c5f7-74fc-435d-aaf0-23aeeba1bcd4",
+                "type": "sequence"
+              },
+              {
+                "activated": true,
+                "metadata": {
+                  "label": ""
+                },
+                "properties": {
+                  "active": "true"
+                },
+                "children": [
+                  {
+                    "activated": true,
+                    "metadata": {
+                      "label": ""
+                    },
+                    "properties": {
+                      "op1": {
+                        "type": "entityKnowledge",
+                        "value": "part.streams[21].data.value"
+                      },
+                      "op2": {
+                        "type": "entityKnowledge",
+                        "value": "part.streams[21].threshold"
+                      },
+                      "op": "<="
+                    },
+                    "children": [
+                      {
+                        "activated": true,
+                        "metadata": {
+                          "label": ""
+                        },
+                        "properties": {},
+                        "children": [
+                          {
+                            "activated": true,
+                            "metadata": {
+                              "label": ""
+                            },
+                            "properties": {
+                              "name": "Log",
+                              "inputParams": [
+                                {
+                                  "key": "message",
+                                  "type": "string",
+                                  "value": "[{t}] Consumption is normal"
+                                },
+                                {
+                                  "key": "t",
+                                  "type": "globalKnowledge",
+                                  "value": "isoTime"
+                                }
+                              ],
+                              "outputParams": []
+                            },
+                            "children": [],
+                            "id": "e6fa2791-66ca-454b-9ea9-056e5ed440bc",
+                            "type": "action"
+                          },
+                          {
+                            "activated": true,
+                            "metadata": {
+                              "label": ""
+                            },
+                            "properties": {
+                              "name": "Stall",
+                              "inputParams": [],
+                              "outputParams": []
+                            },
+                            "children": [],
+                            "id": "ae66922f-3ed3-437d-8ede-a26bcac72dc2",
+                            "type": "action"
+                          }
+                        ],
+                        "id": "8face64b-045f-413f-a3e6-056bcec788f4",
+                        "type": "sequence"
+                      }
+                    ],
+                    "id": "3575d3d5-90d0-4627-a9ab-a9fe9a4e5a2e",
+                    "type": "condition"
+                  },
+                  {
+                    "activated": true,
+                    "metadata": {
+                      "label": ""
+                    },
+                    "properties": {},
+                    "children": [
+                      {
+                        "activated": true,
+                        "metadata": {
+                          "label": ""
+                        },
+                        "properties": {
+                          "name": "Log",
+                          "inputParams": [
+                            {
+                              "key": "message",
+                              "type": "string",
+                              "value": "[{time}] /!\\ Consumption is above threshold ({threshold} kWh)"
+                            },
+                            {
+                              "key": "time",
+                              "type": "globalKnowledge",
+                              "value": "isoTime"
+                            },
+                            {
+                              "key": "threshold",
+                              "type": "entityKnowledge",
+                              "value": "part.streams[21].threshold"
+                            }
+                          ],
+                          "outputParams": []
+                        },
+                        "children": [],
+                        "id": "b13702d6-9127-4598-bd5d-d20dc9b88c6a",
+                        "type": "action"
+                      },
+                      {
+                        "activated": true,
+                        "metadata": {
+                          "label": ""
+                        },
+                        "properties": {
+                          "name": "Stall",
+                          "inputParams": [],
+                          "outputParams": []
+                        },
+                        "children": [],
+                        "id": "29118697-aeaf-4347-a0aa-56673c9c9990",
+                        "type": "action"
+                      }
+                    ],
+                    "id": "002dd8be-9bf8-40f0-83e7-d613e8a19a32",
+                    "type": "sequence"
+                  }
+                ],
+                "id": "d7e3535f-8e4d-4427-9789-2ec44ce6fa33",
+                "type": "priority"
+              }
+            ],
+            "id": "21e19352-7cfc-47cc-9a37-995768042dd3",
+            "type": "parallel"
+          }
+        ],
+        "id": "193ad33e-0c86-426e-8695-c43d0148be03",
+        "type": "sequence"
+      }
+    ],
+    "id": "6416d552-02ce-4be7-a7a4-9160dbf4d0eb"
+  }
+]
