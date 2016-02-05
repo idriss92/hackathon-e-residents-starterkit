@@ -22,8 +22,18 @@
               "label": ""
             },
             "properties": {
-              "name": "",
-              "inputParams": [],
+              "name": "Bonjour",
+              "inputParams": [
+                {
+                  "key": "name",
+                  "type": "string",
+                  "value": "idriss"
+                },
+                {
+                  "type": "string",
+                  "value": ""
+                }
+              ],
               "outputParams": []
             },
             "children": [],
@@ -36,8 +46,18 @@
               "label": ""
             },
             "properties": {
-              "name": "",
-              "inputParams": [],
+              "name": "Ask",
+              "inputParams": [
+                {
+                  "key": "metier",
+                  "type": "string",
+                  "value": "Ingenieur"
+                },
+                {
+                  "type": "string",
+                  "value": ""
+                }
+              ],
               "outputParams": []
             },
             "children": [],
