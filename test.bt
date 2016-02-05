@@ -22,7 +22,7 @@
               "label": ""
             },
             "properties": {
-              "name": "Prompt",
+              "name": "Sure",
               "inputParams": [
                 {
                   "key": "message",
@@ -68,7 +68,7 @@
               "label": ""
             },
             "properties": {
-              "name": "Ask",
+              "name": "Response",
               "inputParams": [
                 {
                   "key": "message",
