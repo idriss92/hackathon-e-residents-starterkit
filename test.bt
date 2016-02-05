@@ -22,19 +22,21 @@
               "label": ""
             },
             "properties": {
-              "name": "Bonjour",
+              "name": "Prompt",
               "inputParams": [
                 {
-                  "key": "name",
+                  "key": "message",
                   "type": "string",
-                  "value": "idriss"
-                },
-                {
-                  "type": "string",
-                  "value": ""
+                  "value": "Enter the message you want to share"
                 }
               ],
-              "outputParams": []
+              "outputParams": [
+                {
+                  "key": "answer",
+                  "type": "entityKnowledge",
+                  "value": "answer"
+                }
+              ]
             },
             "children": [],
             "id": "6d45419d-a490-4972-adf5-a0ff47fdf495",
@@ -46,16 +48,32 @@
               "label": ""
             },
             "properties": {
+              "op1": {
+                "type": "entityKnowledge",
+                "value": "answer"
+              },
+              "op2": {
+                "type": "string",
+                "value": ""
+              },
+              "op": "!="
+            },
+            "children": [],
+            "id": "1530d6a7-942c-4f32-aac3-2c532851f0e8",
+            "type": "condition"
+          },
+          {
+            "activated": true,
+            "metadata": {
+              "label": ""
+            },
+            "properties": {
               "name": "Ask",
               "inputParams": [
                 {
-                  "key": "metier",
-                  "type": "string",
-                  "value": "Comment vas tu ?"
-                },
-                {
-                  "type": "string",
-                  "value": ""
+                  "key": "message",
+                  "type": "entityKnowledge",
+                  "value": "answer"
                 }
               ],
               "outputParams": []
