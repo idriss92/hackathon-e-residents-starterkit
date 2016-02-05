@@ -8,7 +8,33 @@
       "label": ""
     },
     "properties": {},
-    "children": [],
+    "children": [
+      {
+        "activated": true,
+        "metadata": {
+          "label": ""
+        },
+        "properties": {},
+        "children": [
+          {
+            "activated": true,
+            "metadata": {
+              "label": ""
+            },
+            "properties": {
+              "name": "",
+              "inputParams": [],
+              "outputParams": []
+            },
+            "children": [],
+            "id": "17db02ef-4271-4f91-8a38-fd7b86aa6cdc",
+            "type": "action"
+          }
+        ],
+        "id": "715708cc-5e46-4654-9c73-bd5fafd7e49e",
+        "type": "sequence"
+      }
+    ],
     "id": "dc72322a-9500-4483-88fb-655d6bda4d80"
   }
 ]
